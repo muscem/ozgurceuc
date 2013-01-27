@@ -91,7 +91,7 @@ var para=$("#para").val();
 
 $.ajax({
   type: "POST",
-  url: urldeger+"/mobil/_xml_results.php",
+  url: "www.ozgurceuc.com/mobil/_xml_results.php",
   data: {	airport_from: airport_from, 
   			airport_to: airport_to,
 			datefrom: datefrom,

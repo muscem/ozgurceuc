@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 $.ajax({
   type: "GET",
-  url: urldeger+"/_php/xml_country.php",
+  url: "www.ozgurceuc.com/_php/xml_country.php",
   dataType: "xml",
  success: function(xml) {
 
@@ -91,7 +91,7 @@ $(document).ready(function(){
 
 $.ajax({
   type: "GET",
-  url: urldeger+"/_php/xml_airport.php?c="+code,
+  url: "www.ozgurceuc.com/_php/xml_airport.php?c="+code,
   dataType: "xml",
 success: function(xml) {
 
@@ -192,7 +192,7 @@ function xml_acilis(){
 $(document).ready(function(){
 $.ajax({
 type: "GET",
-url: urldeger+"/mobil/_xml_mobile_acilis.php",
+url: "www.ozgurceuc.com/mobil/_xml_mobile_acilis.php",
 data:{ver: ozgurceucVersion, nua: nua, nv:nv},
 dataType: "xml",
 success: function(xml) {

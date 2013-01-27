@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ozgurceuc.app" version="2013.01.22" versionCode="2013.01.22">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ozgurceuc.app" version="2013.01.22" versionCode="2013.01.27">
 <name>ozgurceuc</name> 
 <description>
 Uçak bileti arama uygulamsı. www.ozgurceuc.com sitesinin, mobil cihazlar için hazırlanmış uygulamsıdır.

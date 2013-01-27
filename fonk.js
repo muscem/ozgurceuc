@@ -6,13 +6,15 @@ var sonuclar_donus =new Array();
 var sonuclar_gidis_donus =new array();
 
 function aramaBaglantisi(){
+
+
 var yazli;
 var airport_from=$("#airport_from").val();
 var airport_to=$("#airport_to").val();
 var datefrom=$("#date_from").val();
 var dateto=$("#date_to").val();
-
-yazli='<li class="ui-li" data-theme="a" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center">'
+//alert("airport_from="+airport_from+" airport_to="+airport_to);
+yazli='<li class="ui-li" data-theme="a" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center">';
 yazli=yazli+$("#airport_from option:selected").text()+' - ';
 yazli=yazli+$("#airport_to option:selected").text();
 yazli=yazli+', '+datefrom+' tarihinde gidiş, ';
@@ -38,16 +40,17 @@ yolcular2[1]=$("#yolcular1").val();
 yolcular2[2]=$("#yolcular2").val();
 yolcular2[3]=$("#yolcular3").val();
 yolcular2[4]=$("#yolcular4").val();
+yolcular2[5]=$("#yolcular5").val();
 
 yazli=yazli+adult+' yetişkin';
 if (child>0) yazli=yazli+', '+child+' çocuk';
 if (infant>0) yazli=yazli+', '+infant+' bebek';
-if (yolcular2[0]>0) yazli=yazli+', '+yolcular2[0];
-if (yolcular2[1]>0) yazli=yazli+', '+yolcular2[1];
-if (yolcular2[2]>0) yazli=yazli+', '+yolcular2[2];
-if (yolcular2[3]>0) yazli=yazli+', '+yolcular2[3];
-if (yolcular2[4]>0) yazli=yazli+', '+yolcular2[4];
-
+if (yolcular2[0]>0) yazli=yazli+', '+yolcular2[0]+' 60 üstü';
+if (yolcular2[1]>0) yazli=yazli+', '+yolcular2[1]+' 65 üstü';
+if (yolcular2[2]>0) yazli=yazli+', '+yolcular2[2]+' öğrenci';
+if (yolcular2[3]>0) yazli=yazli+', '+yolcular2[3]+' asker';
+if (yolcular2[4]>0) yazli=yazli+', '+yolcular2[4]+' denizci';
+if (yolcular2[5]>0) yazli=yazli+', '+yolcular2[5]+' genç';
 yazli=yazli+' için bulunan sonuçlar</h4></li>';
 $("#arama_sonuclar").append(yazli);
 
@@ -105,8 +108,13 @@ $.ajax({
 			sunexpress: sunexpress,
 			turkish_airlines: turkish_airlines,
 			kabin: kabin,
-			para: para },
-  dataType: "xml",
+			para: para,
+			uAgent: navigator.userAgent,
+			srch: 'search',
+			ver: ozgurceucVersion,
+			nua: nua,
+			nv:nv},
+  //dataType: "xml",
 success: function(xml) {
 var i;
 var a=[];
@@ -129,31 +137,18 @@ sonucVar=0;
 if (son2[i_sonuc]=="gidis_donus"){
 araCiftYon(xml, son2[i_sonuc]);	//Gidis ve Dönüs sonuçlarinin birlikte oldugu promosyonlu uçuslarin aranmasi
 
-
-
-
-
-
-
-
 var sonuclar=son2[i_sonuc];
 i="0";
 yaz="";
 
-
-
-
 yaz=yaz+'<li class="ui-li ui-li-static ui-btn-up-c" data-theme="c" data-wrapperels="div" data-shadow="false" data-corners="false" id="'+sonuclar+'_sonuclar">';
-
 
 yaz=yaz+'<h4 align="center">'+$("#airport_from option:selected").text()+' - '+$("#airport_to option:selected").text()+', '+datefrom+' tarihindeki gidiş,';
 yaz=yaz+' '+dateto+' tarihindeki dönüş uçuşları</h4>';
 
-
 //yaz=yaz+'<fieldset data-role="controlgroup" data-mini="true" id="'+sonuclar+'_fieldset">';
 yaz=yaz+'<ul id="'+sonuclar+'_ucuslar" class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-role="listview" data-inset="true">';
 
-	
 $(xml).find(sonuclar+'_sonuc').each(function(){
 sonucVar=1;
 
@@ -234,8 +229,6 @@ yaz=yaz+' !';
 yaz=yaz+'</a></div></div>';
 
 
-
-
 yaz=yaz+'<hr>';
 yaz=yaz+'<div class="ui-grid-b">';
 
@@ -270,13 +263,13 @@ yaz=yaz+'</ul>';//</fieldset>
 var sayfaSay=Math.ceil(i/gss);
 
 if(sayfaSay>1){
-yaz=yaz+'<div data-role="controlgroup" data-type="horizontal" data-mini="true" align="center" id="'+sonuclar+'lerSayfalar">';
+yaz=yaz+'<div data-role="controlgroup" data-type="horizontal" align="center" id="'+sonuclar+'lerSayfalar">';
 yaz=yaz+'<a href="#" data-role="button" id="'+sonuclar+'Onceki" class="ui-disabled"><</a>';
 yaz=yaz+'<a href="#" data-role="button" id="'+sonuclar+'Sayfa" class="ui-disabled">1 / '+sayfaSay+'</a>';
 yaz=yaz+'<a href="#" data-role="button" id="'+sonuclar+'Sonraki">></a>';
 yaz=yaz+'</div>';
 
-yaz=yaz+'<input type="button" value="Hepsini Göster" data-mini="true" id="'+sonuclar+'lerGoster" />';
+yaz=yaz+'<input type="button" value="Hepsini Göster" id="'+sonuclar+'lerGoster" />';
 }
 
 yaz=yaz+'</li>';
@@ -313,11 +306,14 @@ var sonuclar=son2[i_sonuc];
 i="0";
 yaz="";
 
-
 yaz=yaz+'<li class="ui-li ui-li-static ui-btn-up-';
 
-if(sonuclar=="gidis"){ yaz=yaz+'d" data-theme="d'; }
-else{ yaz=yaz+'f" data-theme="f'; }; //if(sonuclar=="donus")
+if(sonuclar=="gidis"){
+yaz=yaz+'d" data-theme="d';
+}
+else{ 
+yaz=yaz+'f" data-theme="f'; 
+}; //if(sonuclar=="donus")
 
 yaz=yaz+'" data-wrapperels="div" data-shadow="false" data-corners="false" id="'+sonuclar+'_sonuclar">';
 
@@ -439,13 +435,13 @@ yaz=yaz+'</ul></fieldset>';
 var sayfaSay=Math.ceil(i/gss);
 if(sayfaSay>1){
 	
-yaz=yaz+'<div data-role="controlgroup" data-type="horizontal" data-mini="true" align="center" id="'+sonuclar+'lerSayfalar">';
+yaz=yaz+'<div data-role="controlgroup" data-type="horizontal" align="center" id="'+sonuclar+'lerSayfalar">';
 yaz=yaz+'<a href="#" data-role="button" id="'+sonuclar+'Onceki" class="ui-disabled"><</a>';
 yaz=yaz+'<a href="#" data-role="button" id="'+sonuclar+'Sayfa" class="ui-disabled">1 / '+sayfaSay+'</a>';
 yaz=yaz+'<a href="#" data-role="button" id="'+sonuclar+'Sonraki">></a>';
 yaz=yaz+'</div>';
 
-yaz=yaz+'<input type="button" value="Hepsini Göster" data-mini="true" id="'+sonuclar+'lerGoster" />';
+yaz=yaz+'<input type="button" value="Hepsini Göster" id="'+sonuclar+'lerGoster" />';
 }
 
 yaz=yaz+'</li>';
@@ -465,27 +461,99 @@ $("#arama_sonuclar").append(yaz);//
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 }	//else
-
-
 }	//for (i_sonuc=0;i_sonuc<sonuclar.length;i_sonuc++){
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Seçilen güzergahta uçuş gerçekleştiren firmaların isimleri alınıp sonuçlara eklenecek
+yaz="";
+sonucVar=0;
+
+$(xml).find('firma').each(function(){
+sonucVar=1;
+
+a["firma"]=$(this).find("ad").text();
+a["adres"]=$(this).find("adres").text();
+
+if(yaz!="") yaz=yaz+", ";
+yaz=yaz+'<a href="#" onClick="msgAlert(\''+a['adres']+'\')">'+a["firma"]+'</a>';
+})
+
+if(sonucVar==1){
+yaz='<li class="ui-li ui-li-static ui-btn-up-d" data-theme="d" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center">Seçtiğiniz güzergahte uçuş gerçekleştiren firmalar</h4><p align="center">'+yaz+'</p></li>';
+
+$("#arama_sonuclar").append(yaz);//
+$.mobile.loading('hide');
+}
+
+
+
+
+
+
+
+//Uçuş bulunamayıp, hata(lar) oluşması durumunda, hatalar öğrenilecek
+yaz="";
+sonucVar=0;
+
+$(xml).find('hatalar').each(function(){
+sonucVar=1;
+
+a["hata"]=$(this).find("hata").text();
+
+yaz=yaz+'<li class="ui-li ui-li-static ui-btn-up-d" data-theme="d" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center"><p align="center">'+a["hata"]+'</p></li>';
+})
+
+if(sonucVar==1){
+$("#arama_sonuclar").append(yaz);//
+$.mobile.loading('hide');
+}
+
+
+
+
+
+
+
 $("#sonuclar").trigger( "create" );	//sonuclar sayfasi//	
+
+},
+beforeSend: function() {
+yukleniyor("Uçuşlar aranmaktadır.<br><br>Lütfen bekleyiniz!"+reklam);
+},
+complete: function() {
+//$.mobile.loading('hide');
+cal();
+//alert("complete");
 }
 }).done(function( msg ) {
   //alert( "Data Saved: " + msg );
-cal();
-$.mobile.changePage( $("#sonuclar") , { transition: "slide"} );
+//cal();
+//alert("done");
+/*if ($("#gidis_ucuslar-sort").length ) $("#gidis_ucuslar-sort").trigger("change");
+if ($("#donus_ucuslar-sort").length ) $("#donus_ucuslar-sort").trigger("change");
+if ($("#gidis_donus_ucuslar-sort").length ) $("#gidis_donus_ucuslar-sort").trigger("change");*/
+
+//$.mobile.changePage( $("#sonuclar") , { transition: "slide"} );
 
 });
 

@@ -13,6 +13,11 @@
 *Takvimin disindaki (yaninda) bir yere veya ay ve yilin yazili oldugu kisma tiklayinca
 *takvimi bosaltiyordu (tarihleri siliyordu)
 *Sorunun yerini belirleyip, kendim düzetlme kodu ekledim
+*
+*Düzeltme 3
+*Normalde bu satir var. Ancak minDate tanimlandiginda sorun yaratiyor.
+*mindate'ten küçük aylara geçis yerine, sayfa degistiriyor.
+*Çikarinca herhangi bir sorunla karsilasmadim.
 */
 (function($, undefined ) {
 		  
@@ -30,10 +35,10 @@
 		//extend with some dom manipulation to update the markup for jQM
 		//call immediately
 		function updateDatepicker(){
-			
 			$( ".ui-datepicker-header", dp ).addClass("ui-body-c ui-corner-top").removeClass("ui-corner-all");
-
-			$( ".ui-datepicker-prev, .ui-datepicker-next", dp ).attr("href", "#");
+			
+			//Düzeltme 3 		Normalde bu satir var
+			//$( ".ui-datepicker-prev, .ui-datepicker-next", dp ).attr("href", "#");
 
 			$( ".ui-datepicker-prev", dp ).buttonMarkup({iconpos: "notext", icon: "arrow-l", shadow: true, corners: true});
 

@@ -4,7 +4,7 @@ var sonuclar_gidis_ucus=[];
 var sonuc_gidis_u = [];
 var sonuclar_donus =new Array();
 var sonuclar_gidis_donus =new array();
-
+var sorun=0;
 function aramaBaglantisi(){
 
 
@@ -92,6 +92,7 @@ var para=$("#para").val();
 $.ajax({
   type: "POST",
   url: urldeger+"/mobil/_xml_results.php",
+  timeout: 160000,
   data: {	airport_from: airport_from, 
   			airport_to: airport_to,
 			datefrom: datefrom,
@@ -535,20 +536,24 @@ $.mobile.loading('hide');
 
 
 $("#sonuclar").trigger( "create" );	//sonuclar sayfasi//	
-
+sorun=0;
 },
 beforeSend: function() {
+sorun=1;
 yukleniyor("Uçuşlar aranmaktadır.<br><br>Lütfen bekleyiniz!"+reklam);
 },
 complete: function() {
 //$.mobile.loading('hide');
 cal();
 //alert("complete");
+
+if(sorun==1) $.mobile.loading('hide');		//Timeout=160000 (160sn) nedeniyle sorun yaşandığında, uçuş arandığını yazan mesaj kaldırılacak
 }
 }).done(function( msg ) {
   //alert( "Data Saved: " + msg );
 //cal();
 //alert("done");
+//if(sorun==1) alert("sorunlu");
 /*if ($("#gidis_ucuslar-sort").length ) $("#gidis_ucuslar-sort").trigger("change");
 if ($("#donus_ucuslar-sort").length ) $("#donus_ucuslar-sort").trigger("change");
 if ($("#gidis_donus_ucuslar-sort").length ) $("#gidis_donus_ucuslar-sort").trigger("change");*/

@@ -20,7 +20,7 @@
 <script type="text/javascript">
 var reklam;
 var gss = 2; //her sayfada Görüntülenecek Sonuç Sayısı
-var ozgurceucVersion = "20130127";
+var ozgurceucVersion = "20130129";
 var nua = navigator.userAgent;
 var nv = navigator.vendor;
 
@@ -248,7 +248,7 @@ xml_country("airport_from_country");
 xml_country("airport_to_country");
 //yukleniyor("");
 xml_acilis();
-
+}
 //alert("cem mobile= "+jQuery.browser.mobile);
 
 //alert("user="+navigator.userAgent+"\nlang="+navigator.userLanguage);
@@ -262,13 +262,14 @@ xml_acilis();
 //$.mobile.loading('hide');
 //alert("açılış");
 //})
-
+kapat=1;	//Havaalanları ile ilgili menülere sadece ilk açılışta otomatik olarak bakılacak
 if($("#fly_single").attr("checked")){
 $( "#return" ).hide();
 $( "#date_to" ).hide();
 }
 //$.mobile.loading('hide');
-}
+
+
 }
 
 
@@ -872,22 +873,22 @@ jQuery.mobile.urlHistory.activeIndex = 0;
 */
 //İkinci, uygulama kapatma yöntemi 
 //back button basıldığında bir kapatmak istenip istenmediği sorulup, kapatma koduyla kapatılacak.
-document.addEventListener("backbutton", function () { 
-              navigator.notification.confirm(
-                        'Uygulamayı kapatmak istediğinizden emin misiniz?', 
-                        onConfirmQuit, 
-                        'UYGULAMAYI KAPAT', 
-                        'Evet,Hayır'  
-                    );
-            }, true); 
-
-
-function onConfirmQuit(button){
- if(button == "1"){
-	 kapat=1;
-  navigator.app.exitApp(); 
-}
-}
+//document.addEventListener("backbutton", function () { 
+//              navigator.notification.confirm(
+//                        'Uygulamayı kapatmak istediğinizden emin misiniz?', 
+//                        onConfirmQuit, 
+//                        'UYGULAMAYI KAPAT', 
+//                        'Evet,Hayır'  
+//                    );
+//            }, true); 
+//
+//
+//function onConfirmQuit(button){
+// if(button == "1"){
+//	 kapat=1;
+//  navigator.app.exitApp(); 
+//}
+//}
 //İkinci kapatma kodunun sonu
 
 

@@ -502,7 +502,7 @@ if(sonucVar==1){
 yaz='<li class="ui-li ui-li-static ui-btn-up-d" data-theme="d" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center">Seçtiğiniz güzergahte uçuş gerçekleştiren firmalar</h4><p align="center">'+yaz+'</p></li>';
 
 $("#arama_sonuclar").append(yaz);//
-$.mobile.loading('hide');
+//$.mobile.loading('hide');
 }
 
 
@@ -514,10 +514,10 @@ $.mobile.loading('hide');
 //Uçuş bulunamayıp, hata(lar) oluşması durumunda, hatalar öğrenilecek
 yaz="";
 sonucVar=0;
-
+//alert("cem1");
 $(xml).find('hatalar').each(function(){
 sonucVar=1;
-
+//alert("cem2");
 a["hata"]=$(this).find("hata").text();
 
 yaz=yaz+'<li class="ui-li ui-li-static ui-btn-up-d" data-theme="d" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center"><p align="center">'+a["hata"]+'</p></li>';
@@ -525,9 +525,9 @@ yaz=yaz+'<li class="ui-li ui-li-static ui-btn-up-d" data-theme="d" data-wrappere
 
 if(sonucVar==1){
 $("#arama_sonuclar").append(yaz);//
-$.mobile.loading('hide');
-}
 
+}
+$.mobile.loading('hide');
 
 
 

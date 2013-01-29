@@ -1,11 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ozgurceuc.app" version="2013.01.29" versionCode="2013.01.29">
 <name>ozgurceuc</name> 
 <description>Uçak bileti arama uygulamsı. www.ozgurceuc.com sitesinin, mobil cihazlar için hazırlanmış uygulamsıdır.
 </description> 
 <author href="http://www.ozgurceuc.com" email="iletisim@ozgurceuc.com">mci
-</author>
-<icon src="icon.png" />
+</author> 
 <icon src="ozgurceuc_72.png" width="72" height="72" />
 <icon src="ozgurceuc_48.png" width="48" height="48" />
 <icon src="ozgurceuc_36.png" width="36" height="36" />

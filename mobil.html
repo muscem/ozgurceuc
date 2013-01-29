@@ -19,10 +19,12 @@
 
 <script type="text/javascript">
 var reklam;
+reklam="";
 var gss = 2; //her sayfada Görüntülenecek Sonuç Sayısı
 var ozgurceucVersion = "20130129";
 var nua = navigator.userAgent;
 var nv = navigator.vendor;
+
 
 var urldeger="http://www.ozgurceuc.com";	//İnternete yüklenecek hali
 //var urldeger="..";
@@ -192,6 +194,7 @@ function xml_acilis(){
 $(document).ready(function(){
 $.ajax({
 type: "GET",
+timeout: 10000,
 url: urldeger+"/mobil/_xml_mobile_acilis.php",
 data:{ver: ozgurceucVersion, nua: nua, nv:nv},
 dataType: "xml",
@@ -206,18 +209,19 @@ $(xml).find('bilgi').each(function(){
 
 var bilgi = $(this).text();
 icerik=$("#ana_sayfa_icerik").html()+'<br><div class="ui-bar ui-bar-d ui-corner-all">'+bilgi+'</div>';
-//alert(icerik);
 $("#ana_sayfa_icerik").html(icerik);
 });
 
+if($(xml).find("resim").text()){
 icerik=$("#ana_sayfa_icerik").html()+'<br><div class="ui-bar ui-bar-d ui-corner-all"><img src="'+$(xml).find("resim").text()+'" /></div>';
-
 $("#ana_sayfa_icerik").html(icerik);
+}
+
 
 $(xml).find('reklam').each(function(){
 reklam = $(this).text();
-//alert(reklam);
 });	
+
 
 $("#ana_sayfa").trigger( "create" );	
 $.mobile.loading('hide');
@@ -1001,6 +1005,20 @@ $("#hy_hepsi").attr('checked', true).checkboxradio("refresh");
 
 
 
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// PhoneGap is ready
+//
+function onDeviceReady() {
+    var element = document.getElementById('ana_sayfa_icerik');
+
+    element.innerHTML = element.innerHTML +
+						'Device Name: '     + device.name     + '<br />' + 
+                        'Device PhoneGap: ' + device.phonegap + '<br />' + 
+                        'Device Platform: ' + device.platform + '<br />' + 
+                        'Device UUID: '     + device.uuid     + '<br />' + 
+                        'Device Version: '  + device.version  + '<br />';
+}
 
 
 </script>

@@ -5,21 +5,18 @@
 <script src="jquery-1.8.3.min.js"></script>
 <script src="jquery.mobile-1.2.0.min.js"></script>
 <script src="phonegap.js"></script>
+
 		<title>tittle</title>
 
-		<script>
-
-if (jQuery.mobile.urlHistory.stack.length<2){
-window.location='mobil.html';
-}
-else{
+<script>
+function kapat(){
+	alert("kapanacak");
 navigator.app.exitApp();
 }
-
-		</script>
+</script>
 
 	<body>		
-
+<a href="#" onClick="kapat()">kapat</a>
 	</body>
 
 </html>

@@ -2,13 +2,14 @@
 <html>
 
 	<head>
-
+<script src="jquery-1.8.3.min.js"></script>
+<script src="jquery.mobile-1.2.0.min.js"></script>
 		<title>tittle</title>
 
 		<script>
 
-if (jQuery.mobile.urlHistory.stack.length<1){
-			window.location='./mobil.html';
+if (jQuery.mobile.urlHistory.stack.length<2){
+window.location='mobil.html';
 }
 else{
 navigator.app.exitApp();

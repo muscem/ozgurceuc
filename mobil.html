@@ -184,12 +184,27 @@ baslangic();
 
 });
 
-document.addEventListener("backbutton", function(e){
-		kapat=1;
-		alert("back button listen");
-        e.preventDefault();
-        navigator.app.exitApp();
+
+
+// Wait for Cordova to load
+//
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// Cordova is ready
+//
+function onDeviceReady() {
+document.addEventListener("backbutton", function(e) {
+alert("back button listen");
+navigator.app.exitApp();
 }, false);
+}
+		
+//document.addEventListener("backbutton", function(e){
+//		kapat=1;
+//		alert("back button listen");
+//        e.preventDefault();
+//        navigator.app.exitApp();
+//}, false);
 
 
 

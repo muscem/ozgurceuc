@@ -8,8 +8,8 @@
 		<title>tittle</title>
 
 		<script>
-alert("len="+jQuery.mobile.urlHistory.stack.length);
-if (jQuery.mobile.urlHistory.stack.length<2){
+alert("len="+jQuery.mobile.urlHistory.stack.length+ "index="+jQuery.mobile.urlHistory.activeIndex);
+if (jQuery.mobile.urlHistory.activeIndex<2){
 window.location='./mobil.html';
 }
 else{

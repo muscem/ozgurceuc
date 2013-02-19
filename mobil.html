@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="jquery.ui.datepicker.mobile.css" /> 
   <script src="jQuery.ui.datepicker.js"></script>
   <script src="jquery.ui.datepicker.mobile.js"></script>
-  
+
+<script src="cordova-2.2.0.js"></script>  
 <script src="jquery.tinysort.js"></script>
 <script src="jquery.jqmts.js"></script>
   
@@ -26,8 +27,8 @@ var nua = navigator.userAgent;
 var nv = navigator.vendor;
 
 
-var urldeger="http://www.ozgurceuc.com";	//İnternete yüklenecek hali
-//var urldeger="..";
+//var urldeger="http://www.ozgurceuc.com";	//İnternete yüklenecek hali
+var urldeger="..";
 $.datepicker.setDefaults($.datepicker.regional['tr']);
 $.datepicker.setDefaults({ minDate: 0});
 function tarih_kontrol (){}
@@ -246,7 +247,7 @@ complete: function() {
 var kapat=0;
 function baslangic(){
 //yukleniyor("");
-if(kapat==0){		//Bcak tuşunu basılıp kapatmak istenmediyse
+if(kapat==0){		//Back tuşunu basılıp kapatmak istenmediyse
 xml_country("airport_from_country");
 //yukleniyor("");
 xml_country("airport_to_country");
@@ -333,7 +334,7 @@ $.mobile.changePage( $("#sonuclar") , { transition: "slide"} );
 aramaBaglantisi();
 //cal();
 
-//yukleniyor("Seçtiğiniz güzergahta uçuş arama işlemi gerçekleştirilmektedir. Lütfen bekleyiniz!");
+yukleniyor("Seçtiğiniz güzergahta uçuş arama işlemi gerçekleştirilmektedir. Lütfen bekleyiniz!");
 }
 }
 
@@ -510,7 +511,7 @@ $("#"+sonuclar+"Sonraki").removeClass("ui-disabled");
 }
 }
 					
-
+//Çalıştır
 function cal(){
 /*$( document ).delegate("#sonuclar", "pagebeforecreate", function() {
   alert('A page with an id of "aboutPage" is about to be created by jQuery Mobile!');*/
@@ -569,7 +570,6 @@ $("#sonuclar").trigger( "create" );
 
 function popupGoster(bilgi){
 msgAlert(bilgi+"!");
-
 }
 
 var grVal, drVal;
@@ -851,10 +851,14 @@ $("#hy_hepsi").attr("checked", hy_hepsi).checkboxradio("refresh");
 
 
 
+document.addEventListener("backbutton", function(e){
+		kapat=1;
+        e.preventDefault();
+        navigator.app.exitApp();
+}, false);
 
 
-
-$(document).ready(function(){
+//$(document).ready(function(){
 
 //Back tuşuna basıldığında kapansın
 //document.addEventListener("backbutton", function(e){
@@ -905,6 +909,7 @@ jQuery.mobile.urlHistory.activeIndex = 0;
 //}
 //İkinci kapatma kodunun sonu
 
+//});
 
 
 
@@ -959,7 +964,7 @@ hy_kontrol();
 });
 
 
-});
+
 
 
 function ara2(){
@@ -1008,20 +1013,7 @@ $("#hy_hepsi").attr('checked', true).checkboxradio("refresh");
 
 
 
-document.addEventListener("deviceready", onDeviceReady, false);
 
-// PhoneGap is ready
-//
-function onDeviceReady() {
-    var element = document.getElementById('ana_sayfa_icerik');
-
-    element.innerHTML = element.innerHTML +
-						'Device Name: '     + device.name     + '<br />' + 
-                        'Device PhoneGap: ' + device.phonegap + '<br />' + 
-                        'Device Platform: ' + device.platform + '<br />' + 
-                        'Device UUID: '     + device.uuid     + '<br />' + 
-                        'Device Version: '  + device.version  + '<br />';
-}
 
 
 </script>

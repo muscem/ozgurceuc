@@ -113,8 +113,10 @@ $.ajax({
 			uAgent: navigator.userAgent,
 			srch: 'search',
 			ver: ozgurceucVersion,
-			nua: nua,
-			nv:nv},
+			dname: device.name,
+			dplatform: device.platform,
+			duuid: device.uuid,
+			dversion: device.version},
   //dataType: "xml",
 success: function(xml) {
 var i;

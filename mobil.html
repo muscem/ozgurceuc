@@ -30,8 +30,8 @@ var nua = navigator.userAgent;
 var nv = navigator.vendor;
 
 
-var urldeger="http://www.ozgurceuc.com";	//İnternete yüklenecek hali
-//var urldeger="..";
+//var urldeger="http://www.ozgurceuc.com";	//İnternete yüklenecek hali
+var urldeger="..";
 $.datepicker.setDefaults($.datepicker.regional['tr']);
 $.datepicker.setDefaults({ minDate: 0});
 function tarih_kontrol (){}
@@ -181,16 +181,15 @@ baslangic();
 
 
 //alert("cem");
+
+});
+
 document.addEventListener("backbutton", function(e){
 		kapat=1;
 		alert("back button listen");
         e.preventDefault();
         navigator.app.exitApp();
 }, false);
-
-});
-
-
 
 
 
@@ -1036,7 +1035,10 @@ $("#hy_hepsi").attr('checked', true).checkboxradio("refresh");
 
 
 
-
+function appclose(){
+alert("kapanıyor");
+navigator.app.exitApp();
+}
 
 
 
@@ -1086,9 +1088,15 @@ Bu uygulama; www.ozgurceuc.com sunduğu bir hizmettir. İnternet bağlantısı g
 
 
 </div><!-- /content -->
-
+<br>
+<br>
 <div data-role="footer" data-position="fixed"  data-theme="b"> 
 	<h4>Beta versiyon</h4> 
+<div data-role="navbar" data-iconpos="left">
+<ul>
+<li><a href="#" onClick="appclose();" data-icon="home" data-theme="e">Kapat</a></li>
+</ul>
+</div><!-- /navbar --> 
 </div> 
 
 </div><!-- /page -->

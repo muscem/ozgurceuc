@@ -192,15 +192,25 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // Cordova is ready
 //
+var dname;
+var dplatform;
+var duuid;
+var dversion;
+
 function onDeviceReady() {
 document.addEventListener("backbutton", function(e) {
+
+dname= device.name;
+dplatform= device.platform;
+duuid= device.uuid;
+dversion= device.version;
+
 //alert("back button listen");
 navigator.app.exitApp();
 }, false);
 }
 		
 //document.addEventListener("backbutton", function(e){
-//		kapat=1;
 //		alert("back button listen");
 //        e.preventDefault();
 //        navigator.app.exitApp();
@@ -212,7 +222,7 @@ function yukleniyor(msgY){
 
 if( msgY=="" || msgY=="undefined" ) msgY="Şu anda gerekli bilgiler kontrol ediliyor. Lütfen bekleyiniz.";
 
-msgY="<center><img src=\"logo_ozgurceuc.png\" /><br><h1>www.ozgurceuc.com</h1><br><img src=\"ajax-loader.gif\" /><br>"+msgY+"</center>";
+msgY="<center><img src=\"ajax-loader.gif\" /><br>"+msgY+"</center>";
 
 //alert("msg="+msgY);
 
@@ -280,17 +290,15 @@ complete: function() {
 
 }
 
-var kapat=0;
 function baslangic(){
 //yukleniyor("");
-if(kapat==0){		//Back tuşunu basılıp kapatmak istenmediyse
 xml_country("airport_from_country");
 //yukleniyor("");
 xml_country("airport_to_country");
 //yukleniyor("");
 xml_acilis();
 //alert("len="+jQuery.mobile.urlHistory.stack.length)
-}
+
 
 $( "#fly_single" ).live("change", function() {
 $( "#return" ).hide();	//attr("style", "visibility: hidden");
@@ -311,7 +319,7 @@ $("#fly_return").checkboxradio("refresh");*/
 //$.mobile.loading('hide');
 //alert("açılış");
 //})
-kapat=1;	//Havaalanları ile ilgili menülere sadece ilk açılışta otomatik olarak bakılacak
+//kapat=1;	//Havaalanları ile ilgili menülere sadece ilk açılışta otomatik olarak bakılacak
 if($("#fly_single").attr("checked")){
 $( "#return" ).hide();
 $( "#date_to" ).hide();
@@ -375,10 +383,13 @@ drVal=null;
 $("#toplam_ucret").text("Beta versiyon");
 $("#arama_sonuclar").html("");
 $.mobile.changePage( $("#sonuclar") , { transition: "slide"} );
-aramaBaglantisi();
+
 //cal();
 
-yukleniyor("Seçtiğiniz güzergahta uçuş arama işlemi gerçekleştirilmektedir. Lütfen bekleyiniz!");
+//yukleniyor("Seçtiğiniz güzergahta uçuş arama işlemi gerçekleştirilmektedir.<br><br>Lütfen bekleyiniz!"+reklam);
+//alert("cem1");
+aramaBaglantisi();
+//alert("cem2");
 }
 }
 
@@ -943,7 +954,6 @@ jQuery.mobile.urlHistory.activeIndex = 0;
 //
 //function onConfirmQuit(button){
 // if(button == "1"){
-//	 kapat=1;
 //  navigator.app.exitApp(); 
 //}
 //}
@@ -1109,7 +1119,7 @@ Bu uygulama; www.ozgurceuc.com sunduğu bir hizmettir. İnternet bağlantısı g
 	<h4>Beta versiyon</h4> 
 <div data-role="navbar" data-iconpos="left">
 <ul>
-<li><a href="#" onClick="appclose();" data-icon="home" data-theme="e">Kapat</a></li>
+<li><a href="#" onClick="appclose();" data-icon="delete" data-theme="e">Kapat</a></li>
 </ul>
 </div><!-- /navbar --> 
 </div> 

@@ -7,7 +7,6 @@ var sonuclar_gidis_donus =new array();
 var sorun=0;
 function aramaBaglantisi(){
 
-
 var yazli;
 var airport_from=$("#airport_from").val();
 var airport_to=$("#airport_to").val();
@@ -88,11 +87,10 @@ turkish_airlines ="turkish_airlines";
 var kabin=$("#kabin").val();
 var para=$("#para").val();
 
-
 $.ajax({
   type: "POST",
   url: urldeger+"/mobil/_xml_results.php",
-  timeout: 160000,
+  timeout: 260000,
   data: {	airport_from: airport_from, 
   			airport_to: airport_to,
 			datefrom: datefrom,
@@ -113,12 +111,13 @@ $.ajax({
 			uAgent: navigator.userAgent,
 			srch: 'search',
 			ver: ozgurceucVersion,
-			dname: device.name,
-			dplatform: device.platform,
-			duuid: device.uuid,
-			dversion: device.version},
+			dname: dname,
+			dplatform: dplatform,
+			duuid: duuid,
+			dversion: dversion},
   //dataType: "xml",
 success: function(xml) {
+
 var i;
 var a=[];
 var yaz;

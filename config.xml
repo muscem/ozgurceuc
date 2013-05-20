@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ozgurceuc.app" version="2013.02.19" versionCode="2013.02.19">
+<widget xmlns="http://www.w3.org/ns/widgets" 
+	  xmlns:gap="http://phonegap.com/ns/1.0" 
+	  id="com.ozgurceuc.app" 
+	  version="2013.05.20" 
+	  versionCode="1">
 <name>ozgurceuc</name> 
-<description>www.ozgurceuc.com app</description> 
-<author href="http://www.ozgurceuc.com" email="iletisim@ozgurceuc.com">mci
-</author> 
-<icon src="ozgurceuc_72.png" width="72" height="72" />
-<icon src="ozgurceuc_48.png" width="48" height="48" />
-<icon src="ozgurceuc_36.png" width="36" height="36" />
+<description>www.ozgurceuc.com mobil uygulaması</description> 
+<author href="http://www.ozgurceuc.com" email="iletisim@ozgurceuc.com">ozgurceuc</author>
+<icon src="icon.png" />
+<icon src="images/icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
+<icon src="images/icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
+<icon src="images/icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
+<icon src="images/icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
 </widget>

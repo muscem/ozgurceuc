@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" 
 	  xmlns:gap="http://phonegap.com/ns/1.0" 
 	  id="com.ozgurceuc.app" 
@@ -7,7 +7,8 @@
 <name>ozgurceuc</name> 
 <description>www.ozgurceuc.com mobil uygulaması</description> 
 <author href="http://www.ozgurceuc.com" email="iletisim@ozgurceuc.com">ozgurceuc</author>
-<icon src="icon.png" />
+<preference name="permissions" value="none"/>
+<icon src="images/icon.png" />
 <icon src="images/icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" />
 <icon src="images/icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
 <icon src="images/icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" />

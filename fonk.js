@@ -41,8 +41,7 @@ if (yolcular2[3]>0) yazli=yazli+', '+yolcular2[3]+' asker';
 if (yolcular2[4]>0) yazli=yazli+', '+yolcular2[4]+' denizci';
 if (yolcular2[5]>0) yazli=yazli+', '+yolcular2[5]+' genç';
 yazli=yazli+' için bulunan sonuçlar</h4></li>';
-$("#arama_sonuclar").append(yazli);
-$("ul").listview("refresh");
+$("#arama_sonuclar").append(yazli).listview("refresh");
 var atlasjet="";
 if($("#atlasjet").attr("checked")){
 atlasjet="atlasjet";
@@ -206,8 +205,7 @@ yaz=yaz+'<input type="button" value="Hepsini Göster" id="'+sonuclar+'lerGoster"
 }
 yaz=yaz+'</li>';
 if(sonucVar==1){
-$("#arama_sonuclar").append(yaz);//
-$("ul").listview("refresh");
+$("#arama_sonuclar").append(yaz).listview("refresh");//
 }
 }
 else{
@@ -307,8 +305,7 @@ yaz=yaz+'<input type="button" value="Hepsini Göster" id="'+sonuclar+'lerGoster"
 }
 yaz=yaz+'</li>';
 if(sonucVar==1){
-$("#arama_sonuclar").append(yaz);//
-$("ul").listview("refresh");
+$("#arama_sonuclar").append(yaz).listview("refresh");//
 }
 }
 }
@@ -323,8 +320,7 @@ yaz=yaz+'<a href="#" onClick="msgAlert(\''+a['adres']+'\')">'+a["firma"]+'</a>';
 })
 if(sonucVar==1){
 yaz='<li class="ui-li ui-li-static ui-btn-up-d" data-theme="d" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center">Seçtiğiniz güzergahte uçuş gerçekleştiren firmalar</h4><p align="center">'+yaz+'</p></li>';
-$("#arama_sonuclar").append(yaz);
-$("ul").listview("refresh");
+$("#arama_sonuclar").append(yaz).listview("refresh");
 }
 yaz="";
 sonucVar=0;
@@ -334,27 +330,26 @@ a["hata"]=$(this).find("hata").text();
 yaz=yaz+'<li class="ui-li ui-li-static ui-btn-up-d" data-theme="d" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center"><p align="center">'+a["hata"]+'</p></li>';
 })
 if(sonucVar==1){
-$("#arama_sonuclar").append(yaz);//
+$("#arama_sonuclar").append(yaz).listview("refresh");//
 }
 $('#arama_sonuclar_loading').remove();
-$("ul").listview("refresh");
+$("#arama_sonuclar").listview("refresh");
 sorun=0;
 },
 beforeSend: function() {
 sorun=1;
 var yazli;
 yazli='<li id="arama_sonuclar_loading" class="ui-li" data-theme="f" data-wrapperels="div" data-shadow="false" data-corners="false" style="text-align:center"><br><center><img src=\"images/ajax-loader.gif\" /><br>Uçuşlar aranmaktadır.<br><br>Lütfen bekleyiniz!'+reklam+'</center></li>';
-$("#arama_sonuclar").append(yazli);
-$("ul").listview("refresh");
+$("#arama_sonuclar").append(yazli).listview("refresh");
 },
 complete: function() {
 cal();
-$('#arama_sonuclar_loading').remove();
-$("ul").listview("refresh");
+$('#arama_sonuclar_loading').remove().listview("refresh");
+$("#arama_sonuclar").listview("refresh");
 }
 }).done(function( msg ) {
-$('#arama_sonuclar_loading').remove();
-$("ul").listview("refresh");
+$('#arama_sonuclar_loading').remove().listview("refresh");
+$("#arama_sonuclar").listview("refresh");
 });
 }
 function araCiftYon(sonuclar){
@@ -372,5 +367,5 @@ for (i2=0;i2<sonuclar_gidis[i].length;i2++){
 yaz=yaz+'</fieldset>';
 var sonuc=document.getElementById("arama_sonuclar");								   
 sonuc.appendChild(yaz);
-$("ul").listview("refresh");
+$("#arama_sonuclar").listview("refresh");
 }

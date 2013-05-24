@@ -13,12 +13,12 @@
 <script src="jquery.ui.datepicker.mobile.js"></script>
 <script src="jquery.tinysort.js"></script>
 <script src="jquery.jqmts.js"></script>
-<script src="fonk.js"></script>
+<script src="fonk_temiz.js"></script>
 <script type="text/javascript">
 var reklam;
 reklam="";
 var gss = 2;
-var ozgurceucVersion = "20130220";
+var ozgurceucVersion = "20130520";
 var nua = navigator.userAgent;
 var nv = navigator.vendor;
 var urldeger="http://www.ozgurceuc.com";
@@ -125,7 +125,7 @@ function xml_acilis(){
 $(document).ready(function(){
 $.ajax({
 type: "GET",
-timeout: 100000,
+timeout: 10000,
 url: urldeger+"/mobil/_xml_mobile_acilis.php",
 data:{ver: ozgurceucVersion, nua: nua, nv:nv},
 dataType: "xml",

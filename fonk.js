@@ -42,7 +42,7 @@ if (yolcular2[4]>0) yazli=yazli+', '+yolcular2[4]+' denizci';
 if (yolcular2[5]>0) yazli=yazli+', '+yolcular2[5]+' genç';
 yazli=yazli+' için bulunan sonuçlar</h4></li>';
 $("#arama_sonuclar").append(yazli);
-$.mobile.fixedToolbars.show(true);
+$("#sonuclar").trigger( "create" );
 var atlasjet="";
 if($("#atlasjet").attr("checked")){
 atlasjet="atlasjet";
@@ -207,6 +207,7 @@ yaz=yaz+'<input type="button" value="Hepsini Göster" id="'+sonuclar+'lerGoster"
 yaz=yaz+'</li>';
 if(sonucVar==1){
 $("#arama_sonuclar").append(yaz);//
+$("#sonuclar").trigger( "create" );
 }
 }
 else{
@@ -307,6 +308,7 @@ yaz=yaz+'<input type="button" value="Hepsini Göster" id="'+sonuclar+'lerGoster"
 yaz=yaz+'</li>';
 if(sonucVar==1){
 $("#arama_sonuclar").append(yaz);//
+$("#sonuclar").trigger( "create" );
 }
 }
 }
@@ -322,6 +324,7 @@ yaz=yaz+'<a href="#" onClick="msgAlert(\''+a['adres']+'\')">'+a["firma"]+'</a>';
 if(sonucVar==1){
 yaz='<li class="ui-li ui-li-static ui-btn-up-d" data-theme="d" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center">Seçtiğiniz güzergahte uçuş gerçekleştiren firmalar</h4><p align="center">'+yaz+'</p></li>';
 $("#arama_sonuclar").append(yaz);
+$("#sonuclar").trigger( "create" );
 }
 yaz="";
 sonucVar=0;
@@ -333,23 +336,30 @@ yaz=yaz+'<li class="ui-li ui-li-static ui-btn-up-d" data-theme="d" data-wrappere
 if(sonucVar==1){
 $("#arama_sonuclar").append(yaz);//
 }
-$.mobile.loading('hide');
+$('#arama_sonuclar_loading').remove();
 $("#sonuclar").trigger( "create" );
 sorun=0;
 },
 beforeSend: function() {
 sorun=1;
-yukleniyor("Uçuşlar aranmaktadır.<br><br>Lütfen bekleyiniz!"+reklam);
+var yazli;
+yazli='<li id="arama_sonuclar_loading" class="ui-li" data-theme="f" data-wrapperels="div" data-shadow="false" data-corners="false" style="text-align:center"><br><center><img src=\"images/ajax-loader.gif\" /><br>Uçuşlar aranmaktadır.<br><br>Lütfen bekleyiniz!'+reklam+'</center></li>';
+$("#arama_sonuclar").append(yazli);
+$("#sonuclar").trigger( "create" );
 },
 complete: function() {
 cal();
-if(sorun==1) $.mobile.loading('hide');
+$('#arama_sonuclar_loading').remove();
+$("#sonuclar").trigger( "create" );
 }
 }).done(function( msg ) {
+$('#arama_sonuclar_loading').remove();
+$("#sonuclar").trigger( "create" );
 });
 }
 function araCiftYon(sonuclar){
 }
+
 function araTekYon(xml, sonuclar){
 }
 function sonuc_yaz(){
@@ -361,5 +371,6 @@ for (i2=0;i2<sonuclar_gidis[i].length;i2++){
 }
 yaz=yaz+'</fieldset>';
 var sonuc=document.getElementById("arama_sonuclar");								   
-sonuc.appendChild(yaz);	
+sonuc.appendChild(yaz);
+$("#sonuclar").trigger( "create" );
 }

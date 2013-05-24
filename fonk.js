@@ -42,6 +42,7 @@ if (yolcular2[4]>0) yazli=yazli+', '+yolcular2[4]+' denizci';
 if (yolcular2[5]>0) yazli=yazli+', '+yolcular2[5]+' genç';
 yazli=yazli+' için bulunan sonuçlar</h4></li>';
 $("#arama_sonuclar").append(yazli).listview("refresh");
+alert("cem");
 var atlasjet="";
 if($("#atlasjet").attr("checked")){
 atlasjet="atlasjet";
@@ -346,6 +347,7 @@ complete: function() {
 cal();
 $('#arama_sonuclar_loading').remove().listview("refresh");
 $("#arama_sonuclar").listview("refresh");
+alert("cem2");
 }
 }).done(function( msg ) {
 $('#arama_sonuclar_loading').remove().listview("refresh");

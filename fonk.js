@@ -5,6 +5,7 @@ var sonuclar_donus =new Array();
 var sonuclar_gidis_donus =new array();
 var sorun=0;
 function aramaBaglantisi(){
+alert("cem1");
 var yazli;
 var airport_from=$("#airport_from").val();
 var airport_to=$("#airport_to").val();
@@ -41,9 +42,10 @@ if (yolcular2[3]>0) yazli=yazli+', '+yolcular2[3]+' asker';
 if (yolcular2[4]>0) yazli=yazli+', '+yolcular2[4]+' denizci';
 if (yolcular2[5]>0) yazli=yazli+', '+yolcular2[5]+' genç';
 yazli=yazli+' için bulunan sonuçlar</h4></li>';
+alert("cem2");
 $("#arama_sonuclar").append(yazli);
 $("#sonuclar").trigger( "create" );
-alert("cem");
+alert("cem3");
 var atlasjet="";
 if($("#atlasjet").attr("checked")){
 atlasjet="atlasjet";
@@ -353,7 +355,7 @@ complete: function() {
 cal();
 $('#arama_sonuclar_loading').remove();
 $("#sonuclar").trigger( "create" );
-alert("cem2");
+alert("cem4");
 }
 }).done(function( msg ) {
 $('#arama_sonuclar_loading').remove();

@@ -200,23 +200,16 @@ return false;
 return true;
 }
 function ara(){
-alert("cem1");
 var kontrol;
 kontrol=form_kontrol();
-alert("cem2");
 if(kontrol){
-alert("cem3");
 grVal=null;
 drVal=null;
 $("#toplam_ucret").text(" ");
 $("#arama_sonuclar").html("");
-alert("cem4");
 $.mobile.changePage( $("#sonuclar") , { transition: "none"} );
-alert("cem5");
 aramaBaglantisi();
-alert("cem6");
 }
-alert("cem7");
 }
 var msgAlert=function(msg){
 $("<div class='ui-loader ui-overlay-shadow ui-body-a ui-corner-all'><h3>"+msg+"</h3></div>")

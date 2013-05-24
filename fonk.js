@@ -5,13 +5,11 @@ var sonuclar_donus =new Array();
 var sonuclar_gidis_donus =new array();
 var sorun=0;
 function aramaBaglantisi(){
-alert("cem8");
 var yazli;
 var airport_from=$("#airport_from").val();
 var airport_to=$("#airport_to").val();
 var datefrom=$("#date_from").val();
 var dateto=$("#date_to").val();
-alert("cem9");
 yazli='<li class="ui-li" data-theme="a" data-wrapperels="div" data-shadow="false" data-corners="false"><h4 align="center">';
 yazli=yazli+$("#airport_from option:selected").text()+' - ';
 yazli=yazli+$("#airport_to option:selected").text();
@@ -43,10 +41,8 @@ if (yolcular2[3]>0) yazli=yazli+', '+yolcular2[3]+' asker';
 if (yolcular2[4]>0) yazli=yazli+', '+yolcular2[4]+' denizci';
 if (yolcular2[5]>0) yazli=yazli+', '+yolcular2[5]+' genç';
 yazli=yazli+' için bulunan sonuçlar</h4></li>';
-alert("cem10");
-alert("y="+yazli);
 $("#arama_sonuclar").append(yazli);
-alert("cem11");
+$.mobile.fixedToolbars.show(true);
 var atlasjet="";
 if($("#atlasjet").attr("checked")){
 atlasjet="atlasjet";
@@ -342,23 +338,18 @@ $("#sonuclar").trigger( "create" );
 sorun=0;
 },
 beforeSend: function() {
-alert("cem20");
 sorun=1;
 yukleniyor("Uçuşlar aranmaktadır.<br><br>Lütfen bekleyiniz!"+reklam);
-alert("cem21");
 },
 complete: function() {
-	alert("cem22");
 cal();
 if(sorun==1) $.mobile.loading('hide');
 }
 }).done(function( msg ) {
-	alert("cem23");
 });
 }
 function araCiftYon(sonuclar){
 }
-
 function araTekYon(xml, sonuclar){
 }
 function sonuc_yaz(){

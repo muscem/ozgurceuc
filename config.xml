@@ -2,7 +2,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets" 
 	  xmlns:gap="http://phonegap.com/ns/1.0" 
 	  id="com.ozgurceuc.app" 
-	  version="2013.05.20" 
+	  version="2013.05.25" 
 	  versionCode="1">
 <name>ozgurceuc</name> 
 <description>www.ozgurceuc.com mobil uygulaması</description> 

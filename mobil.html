@@ -274,7 +274,7 @@ $( "#gidisOnceki" ).live("click", function() {
 ucusOnceki("gidis");
 });
 $( "#gidis_donusOnceki" ).live("click", function() {
-ucusOnceki("gidis");
+ucusOnceki("gidis_donus");
 });
 function ucusOnceki(ucus){
 $("#"+ucus+"Onceki").trigger( "focusout" );	
@@ -301,7 +301,7 @@ $( "#gidisSonraki" ).live("click", function() {
 ucusSonraki("gidis");
 });
 $( "#gidis_donusSonraki" ).live("click", function() {
-ucusSonraki("gidis");
+ucusSonraki("gidis_donus");
 });
 function ucusSonraki(ucus){
 $("#"+ucus+"Sonraki").trigger( "focusout" );											
@@ -447,7 +447,7 @@ var genel_toplam=grVal[2]+" "+grVal[4]+" + "+	drVal[2]+" "+drVal[4];
 }
 $("#toplam_ucret").text();
 if(genel_toplam.indexOf(".") != -1) {
-genel_toplam = genel_toplam.substring(0,(genel_toplam.indexOf(".") + 3));
+genel_toplam = genel_toplam.substring(0,(genel_toplam.indexOf(".") + 3))+genel_toplam.substring(genel_toplam.indexOf(" "), genel_toplam.length);
 } 
 genel_toplam="Toplam : "+genel_toplam;
 $("#toplam_ucret").text(genel_toplam);
